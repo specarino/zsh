@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Version 1.0
+# Version 1.1
 # Updated 19th September 2021
 
 echo -e "\033[0;31mDisclaimer: This installer is unofficial and only works with Ubuntu/Debian.\033[0m"
@@ -32,67 +32,29 @@ while true; do
     esac
 done
 
-sleep 1
-
-echo -e "\033[32mConfiguring default .zshrc...\033[0m"
-
 ZSHRC="$HOME/.zshrc"
 
-echo '# Lines configured by zsh-newuser-install
-HISTFILE=~/.histfile
-HISTSIZE=1000
-SAVEHIST=1000
-setopt autocd
-unsetopt beep extendedglob nomatch notify
-bindkey -e
-# End of lines configured by zsh-newuser-install
-
-# The following lines were added by compinstall
-zstyle :compinstall filename '$HOME/.zshrc'
-
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall' > $ZSHRC
+echo -e "\033[32mConfiguring default .zshrc...\033[0m"
+wget https://raw.githubusercontent.com/specarino/zsh/main/default_zshrc ~/.zsh/config
+cat ~/.zsh/default_zshrc > $ZSHRC
 
 echo -e "\033[32mCloning the necessary plugins...\033[0m"
-
 git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ~/.zsh/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.zsh/zsh-syntax-highlighting
 git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-history-substring-search
 
 echo -e "\033[32mAdding the plugins to the .zshrc...\033[0m"
-
 echo '' >> $ZSHRC
-echo '# The following lines were added by specarino
+wget https://raw.githubusercontent.com/specarino/zsh/main/specarino_config ~/.zsh/config
+cat ~/.zsh/specarino_config >> $ZSHRC
 
-# Prompt Style
-alias ll='ls -al'
-export CLICOLOR=1
-export LSCOLORS=GxFxCxDxBxegedabagaced
-autoload -U colors && colors
-PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
+echo -e "\033[32mCleaning up some temporary files...\033[0m"
+rm -r ~/.zsh/config
 
-# LS File Colors
-alias ls='ls --color=auto'
-
-# zsh-completions
-fpath=(~/.zsh/zsh-completions/src $fpath)
-
-# zsh-autosuggestions
-source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# zsh-syntax-highlighting
-source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
-# ensure zsh-syntax-highlighting is loaded before zsh-history-substring-search
-# zsh-history-substring-search
-source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
-
-# End of lines added by specarino' >> $ZSHRC
+echo -e "\033[32mGrabbing uninstaller script...\033[0m"
+wget https://raw.githubusercontent.com/specarino/zsh/main/zsh-uninstaller.sh ~/
 
 echo -e "\033[32m.zshrc configured!\033[0m"
-echo -e "\n\033[34mWelcome to your zsh shell $USER!\033[0m\n"
+echo -e "\n\033[34mWelcome to your zsh shell $USER! Uninstaller script available in ~/.zsh\033[0m\n"
 exec zsh
