@@ -1,5 +1,6 @@
 # ZSH Installer Script
 Just a little script I made to install and initialize ZSH with the look and feel of Bash, along with the addition of some features from Fish.
+> ⚠️ The installer will reset any previous ZSH installation. Only use this if it is your first time installing ZSH.
 
 ## Installing 
     wget https://raw.githubusercontent.com/specarino/zsh/main/zsh-installer.sh
