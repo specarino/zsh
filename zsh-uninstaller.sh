@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# Version 1.0
+# Version 1.1
 # Updated 19th September 2021
 
 echo -e "\033[0;31mDisclaimer: This uninstaller will remove all traces of zsh.\033[0m"
-echo -e "\033[0;31mPlease read the script before executing it to check if there's no conflict.\033[0m"
+echo -e "\033[0;31mPlease read the script before executing it to check for conflict.\033[0m"
 read -p "Type confirm if you wish to continue: " input
 if [ ! "$input" = "confirm" ]
 then
