@@ -33,10 +33,11 @@ while true; do
 done
 
 ZSHRC="$HOME/.zshrc"
+mkdir -p ~/.zsh/config/
 
 echo -e "\033[32mConfiguring default .zshrc...\033[0m"
 wget https://raw.githubusercontent.com/specarino/zsh/main/default_zshrc ~/.zsh/config
-cat ~/.zsh/default_zshrc > $ZSHRC
+cat ~/.zsh/config/default_zshrc > $ZSHRC
 
 echo -e "\033[32mCloning the necessary plugins...\033[0m"
 git clone https://github.com/zsh-users/zsh-completions.git ~/.zsh/zsh-completions
@@ -47,13 +48,14 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ~/.zsh/zsh-h
 echo -e "\033[32mAdding the plugins to the .zshrc...\033[0m"
 echo '' >> $ZSHRC
 wget https://raw.githubusercontent.com/specarino/zsh/main/specarino_config ~/.zsh/config
-cat ~/.zsh/specarino_config >> $ZSHRC
+cat ~/.zsh/config/specarino_config >> $ZSHRC
 
 echo -e "\033[32mCleaning up some temporary files...\033[0m"
 rm -r ~/.zsh/config
 
 echo -e "\033[32mGrabbing uninstaller script...\033[0m"
 wget https://raw.githubusercontent.com/specarino/zsh/main/zsh-uninstaller.sh ~/
+chmod +x ~/zsh-uninstaller.sh
 
 echo -e "\033[32m.zshrc configured!\033[0m"
 echo -e "\n\033[34mWelcome to your zsh shell $USER! Uninstaller script available in ~/.zsh\033[0m\n"
