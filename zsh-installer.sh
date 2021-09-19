@@ -54,8 +54,8 @@ echo -e "\033[32mCleaning up some temporary files...\033[0m"
 rm -r ~/.zsh/config
 
 echo -e "\033[32mGrabbing uninstaller script...\033[0m"
-wget https://raw.githubusercontent.com/specarino/zsh/main/zsh-uninstaller.sh -P ~/
-chmod +x ~/zsh-uninstaller.sh
+wget https://raw.githubusercontent.com/specarino/zsh/main/zsh-uninstaller.sh -P ~/.zsh
+chmod +x ~/.zsh/zsh-uninstaller.sh
 
 echo -e "\033[32m.zshrc configured!\033[0m"
 echo -e "\n\033[34mWelcome to your zsh shell $USER! Uninstaller script available in ~/.zsh\033[0m\n"
