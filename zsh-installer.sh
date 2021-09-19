@@ -21,7 +21,7 @@ readPassword() {
     done
 }
 
-sudo apt update && sudo apt install zsh git
+sudo apt-get update && sudo apt-get install zsh git
 
 while true; do
     read -p "Do you wish to install zsh as the default shell? (y/n) " yn
