@@ -1,0 +1,28 @@
+# The following lines were added by specarino
+
+# Prompt Style
+alias ll=ls -al
+export CLICOLOR=1
+export LSCOLORS=GxFxCxDxBxegedabagaced
+autoload -U colors && colors
+PS1="%{$fg[green]%}%n@%m%{$reset_color%}:%{$fg[cyan]%}%1~%{$reset_color%} %% "
+
+# LS File Colors
+alias ls=ls --color=auto
+
+# zsh-completions
+fpath=(~/.zsh/zsh-completions/src $fpath)
+
+# zsh-autosuggestions
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# zsh-syntax-highlighting
+source ~/.zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# ensure zsh-syntax-highlighting is loaded before zsh-history-substring-search
+# zsh-history-substring-search
+source ~/.zsh/zsh-history-substring-search/zsh-history-substring-search.zsh
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# End of lines added by specarino
